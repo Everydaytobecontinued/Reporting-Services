@@ -1,5 +1,4 @@
-﻿Write-Host "Creating the User Store Database"
-& sqlcmd -S "." -i "Setup\CreateUserStore.Sql"
+﻿
 
 Write-Host "Copying Logon.aspx page `n" -ForegroundColor Green
 Copy-Item -Path Logon.aspx -Destination "C:\Program Files\Microsoft Power BI Report Server\PBIRS\ReportServer\"
@@ -30,7 +29,7 @@ $extension = $rsConfigFile.CreateElement("Extension")
 $extension.SetAttribute("Name","Forms")
 $extension.SetAttribute("Type","Microsoft.Samples.ReportingServices.CustomSecurity.Authorization, Microsoft.Samples.ReportingServices.CustomSecurity")
 $configuration =$rsConfigFile.CreateElement("Configuration")
-$configuration.InnerXml="<AdminConfiguration>`n<UserName>username</UserName>`n</AdminConfiguration>"
+$configuration.InnerXml="<AdminConfiguration>`n<UserName>ljc</UserName>`n</AdminConfiguration>"
 $extension.AppendChild($configuration)
 $rsConfigFile.Configuration.Extensions.Security.AppendChild($extension)
 $rsConfigFile.Configuration.Extensions.Authentication.Extension.Name ="Forms"
